@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ============ LIGHT THEME (default) — warm premium off-white ============ */
+  :root {
+    color-scheme: light;
+
+    /* surfaces — warm paper, never jarring white */
+    --background: 40 30% 97%;
+    --foreground: 250 12% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 250 12% 9%;
+
+    /* muted & borders */
+    --muted: 40 16% 91%;
+    --muted-foreground: 250 6% 44%;
+    --border: 45 12% 84%;
+
+    /* brand accents — deeper on light for AA text contrast */
+    --primary: 157 62% 28%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 157 88% 54%;
+    --accent-foreground: 250 12% 8%;
+    --ring: 157 62% 40%;
+  }
+
+  /* ============ DARK THEME — deep neutral obsidian (NO navy) ============ */
+  .dark {
+    color-scheme: dark;
+
+    /* surfaces — true charcoal/obsidian neutrals */
+    --background: 240 6% 4%;
+    --foreground: 240 12% 95%;
+    --card: 240 5% 7%;
+    --card-foreground: 240 12% 95%;
+
+    /* muted & borders */
+    --muted: 240 5% 12%;
+    --muted-foreground: 240 5% 63%;
+    --border: 240 5% 18%;
+
+    /* brand accents — neon emerald / cyan glow */
+    --primary: 157 88% 54%;
+    --primary-foreground: 250 20% 5%;
+    --accent: 157 88% 54%;
+    --accent-foreground: 250 20% 5%;
+    --ring: 157 88% 54%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-foreground;
+  }
+
+  /* Slim, theme-aware scrollbar */
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.35);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--ring));
+  }
+
+  /* Focus visibility for keyboard users */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* ---- Glassmorphism (theme-aware card surfaces) ---- */
+  .glass {
+    @apply border-border bg-card/60 backdrop-blur-xl;
+    box-shadow: inset 0 1px 0 0 hsl(var(--foreground) / 0.06);
+  }
+
+  .glass-strong {
+    @apply border-border bg-card/85 backdrop-blur-2xl;
+    box-shadow: inset 0 1px 0 0 hsl(var(--foreground) / 0.08);
+  }
+
+  .glass-hover {
+    @apply transition-colors duration-300;
+  }
+  .glass-hover:hover {
+    @apply border-accent/40 bg-card/90;
+  }
+
+  /* ---- Neon text gradient (dark-mode hero/brand accents) ---- */
+  .text-gradient-neon {
+    @apply bg-gradient-to-r from-neon-emerald via-cyan-300 to-neon-cyan bg-clip-text text-transparent;
+  }
+  /* Light mode: deepen emerald/cyan for contrast on paper */
+  :root .text-gradient-neon {
+    @apply bg-gradient-to-r from-emerald-600 via-cyan-600 to-cyan-500 bg-clip-text text-transparent;
+  }
+
+  /* ---- Structural helpers ---- */
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+  }
+
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(
+        to right,
+        hsl(var(--foreground) / 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        hsl(var(--foreground) / 0.05) 1px,
+        transparent 1px
+      );
+    background-size: 44px 44px;
+  }
+}
+
+@layer utilities {
+  .mask-fade-bottom {
+    -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
