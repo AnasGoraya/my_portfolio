@@ -8,7 +8,7 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 const BUDGETS = ["< $1k", "$1k – $5k", "$5k – $15k", "$15k+"];
 
 const EMAIL = "anasgoraya99@gmail.com";
-const WHATSAPP = "https://wa.me/923000000000";
+const WHATSAPP = "https://wa.me/923327402501";
 
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/AnasGoraya", Icon: Github },
@@ -80,7 +80,7 @@ export function Contact() {
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-foreground hover:text-accent"
                   >
-                    Chat instantly
+                    +92 332 7402501
                   </a>
                 </div>
               </div>

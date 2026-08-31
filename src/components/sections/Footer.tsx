@@ -1,4 +1,4 @@
-import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUp, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 
 const NAV = [
   { href: "#home", label: "Home" },
@@ -10,6 +10,7 @@ const NAV = [
 ];
 
 const SOCIALS = [
+  { label: "WhatsApp", href: "https://wa.me/923327402501", Icon: MessageCircle },
   { label: "GitHub", href: "https://github.com/AnasGoraya", Icon: Github },
   { label: "LinkedIn", href: "https://linkedin.com/in/anasgoraya", Icon: Linkedin },
   { label: "Email", href: "mailto:anasgoraya99@gmail.com", Icon: Mail },
