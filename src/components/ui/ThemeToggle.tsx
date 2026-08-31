@@ -18,9 +18,9 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   useEffect(() => setMounted(true), []);
 
-  // Default to dark pre-hydration (matches defaultTheme="dark") so the
-  // moon icon renders on first paint instead of a wrong sun flash.
-  const isDark = !mounted ? true : resolvedTheme === "dark";
+  // Default to light pre-hydration (matches defaultTheme="light") so the
+  // sun icon renders on first paint instead of a wrong moon flash.
+  const isDark = !mounted ? false : resolvedTheme === "dark";
 
   return (
     <button

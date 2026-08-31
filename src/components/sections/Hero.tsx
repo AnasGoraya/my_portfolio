@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -62,6 +63,35 @@ export function Hero() {
         animate="show"
         className="container-narrow relative z-10 flex flex-col items-center py-32 text-center"
       >
+        {/* Profile avatar */}
+        <motion.div variants={item} className="mb-7">
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="relative h-28 w-28 sm:h-32 sm:w-32"
+          >
+            {/* Neon gradient ring */}
+            <div
+              aria-hidden
+              className="absolute -inset-[3px] rounded-full bg-gradient-to-tr from-neon-emerald to-neon-cyan opacity-80 blur-[1px]"
+            />
+            <div
+              aria-hidden
+              className="absolute -inset-[3px] rounded-full bg-gradient-to-tr from-neon-emerald to-neon-cyan opacity-20 blur-md"
+            />
+            <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-background">
+              <Image
+                src="/imgs/anas-avatar.jpg"
+                alt="Anas Nazir — profile portrait"
+                fill
+                sizes="(max-width: 640px) 112px, 128px"
+                priority
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+
         {/* Status pill */}
         <motion.div variants={item}>
           <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-foreground">

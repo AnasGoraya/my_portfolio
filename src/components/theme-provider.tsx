@@ -5,9 +5,9 @@ import type { ComponentProps } from "react";
 
 /**
  * next-themes provider — drives the `.dark` class strategy.
- * Defaults to dark (obsidian theme) to match the neon brand identity;
- * toggling writes `class="dark"` on <html> and flips every
- * `bg-background` / `text-foreground` utility.
+ * Defaults to light (warm off-white / cream theme); toggling writes
+ * `class="dark"` on <html> and flips every `bg-background` /
+ * `text-foreground` utility.
  */
 export function ThemeProvider({
   children,
@@ -16,7 +16,7 @@ export function ThemeProvider({
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="dark"
+      defaultTheme="light"
       enableSystem={false}
       disableTransitionOnChange={false}
       {...props}

@@ -34,7 +34,7 @@ Path alias: `@/*` → `./src/*`.
 
 ## Design System (Dual Theme)
 
-- **Light** (`:root`): warm off-white bg; **Dark** (`.dark`): neutral obsidian `#09090b`. **No navy anywhere.**
+- **Light** (`:root`, **default**): warm off-white + light-brown/cream/latte tones; **Dark** (`.dark`): neutral obsidian `#09090b`. **No navy anywhere.** (Default theme = light — see `ThemeProvider`.)
 - Semantic tokens via CSS vars in `globals.css`: `--background`, `--foreground`, `--card`, `--muted`, `--border`, `--accent`, `--primary`, `--ring`.
 - Use semantic classes (`bg-background`, `text-foreground`, `bg-card`, `border-border`, `text-muted-foreground`) — NOT hardcoded hex/zinc, so both themes work.
 - Neon accents (emerald `#2bf2a3`, cyan `#22d3ee`) for dark-mode glow; `text-gradient-neon` has a light-mode override.
